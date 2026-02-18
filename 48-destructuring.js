@@ -1,16 +1,40 @@
-// const fullName = ["Richo", "Wardana", "Aricho", "Anjay", "Guninjay", "Washoy"];
+// ==============================
+// DESTRUCTURING DI JAVASCRIPT
+// ==============================
 
-// const [firstName, middleName, lastName, ...others] = fullName;
+// Destructuring adalah fitur untuk mengambil data dari
+// array atau object dan menyimpannya ke variabel dengan mudah
 
-// // const firstName = fullName[0];
-// // const lastName = fullName[1];
-// // const middleName = fullName[2];
 
-// console.log(firstName);
-// console.log(lastName);
-// console.log(middleName);
-// console.log(others);
+// =====================================================
+// DESTRUCTURING ARRAY
+// =====================================================
 
+const fullName = ["Richo", "Wardana", "Aricho", "Anjay", "Guninjay", "Washoy"];
+
+// mengambil data berdasarkan posisi (index)
+
+const [firstName, middleName, lastName, ...others] = fullName;
+
+// sama seperti:
+// const firstName = fullName[0];
+// const middleName = fullName[1];
+// const lastName = fullName[2];
+
+console.log(firstName);   // Richo
+console.log(middleName);  // Wardana
+console.log(lastName);    // Aricho
+console.log(others);      // ["Anjay", "Guninjay", "Washoy"]
+
+
+// ...others disebut REST ELEMENT
+// digunakan untuk mengambil sisa data
+
+
+
+// =====================================================
+// DESTRUCTURING OBJECT
+// =====================================================
 
 const person = {
     name: "Richo",
@@ -25,21 +49,32 @@ const person = {
     }
 };
 
-// const { name, age, address, hobbies, skills } = person;
 
-// console.log(name);
-// console.log(age);
-// console.log(address);
-// console.log(hobbies);
-// console.log(skills);
+// destructuring object dan nested object
 
-const { name, age, address: { city, country }, ...others } = person;
-console.log(name);
-console.log(age);
-console.log(city);
-console.log(country);
-console.log(others);
+const {
+    name,
+    age,
+    address: { city, country },
+    ...othersObject
+} = person;
 
+
+console.log(name);     // Richo
+console.log(age);      // 25
+console.log(city);     // Nganjuk
+console.log(country);  // Indonesia
+console.log(othersObject);
+// {
+//   hobbies: [...],
+//   skills: {...}
+// }
+
+
+
+// =====================================================
+// DESTRUCTURING DI PARAMETER FUNCTION
+// =====================================================
 
 const personObject = {
     firstName: "Richo",
@@ -47,51 +82,133 @@ const personObject = {
     lastName: "Wardana"
 };
 
+
+// langsung destructuring di parameter
+
 function displayPerson({ firstName, middleName, lastName }) {
 
     console.log(firstName);
     console.log(middleName);
     console.log(lastName);
-};
+
+}
 
 displayPerson(personObject);
 
 
+// sama seperti:
+// const firstName = personObject.firstName;
+
+
+
+// =====================================================
+// DESTRUCTURING ARRAY DI PARAMETER FUNCTION
+// =====================================================
+
 function sum([first, second]) {
+
     return first + second;
+
 }
 
-console.log(sum([1, 2]));
+console.log(sum([1, 2])); // 3
 
+
+
+// =====================================================
+// DEFAULT VALUE DESTRUCTURING ARRAY
+// =====================================================
 
 const listNama = ["Richo", "Wardana"];
-const [firstName, middleName = "K", lastName] = listNama;
 
-console.log(firstName);
-console.log(middleName);
-console.log(lastName);
+const [
+    firstNama,
+    middleNama = "K", // default jika tidak ada
+    lastNama
+] = listNama;
 
+
+console.log(firstNama);  // Richo
+console.log(middleNama); // Wardana
+console.log(lastNama);   // undefined
+
+
+
+// =====================================================
+// DEFAULT VALUE DESTRUCTURING OBJECT
+// =====================================================
 
 const namaAing = {
     fName: "Richo",
     lName: "Wardana"
 };
 
-const { fName, mName = "K.", lName } = namaAing;
+const {
+    fName,
+    mName = "K.", // default value
+    lName
+} = namaAing;
 
-console.log(fName);
-console.log(mName);
-console.log(lName);
 
+console.log(fName); // Richo
+console.log(mName); // K.
+console.log(lName); // Wardana
+
+
+
+// =====================================================
+// RENAME VARIABLE SAAT DESTRUCTURING
+// =====================================================
 
 const {
-    firstN: namaDepan,
-    middleN: namaTengah = "K",
-    lastN: namaBelakang
+    name: namaDepan,
+    age: umur
 } = person;
 
-console.log(namaDepan);
-console.log(namaTengah);
-console.log(namaBelakang);
+console.log(namaDepan); // Richo
+console.log(umur);      // 25
 
 
+// format:
+// property: namaVariableBaru
+
+
+
+// =====================================================
+// DEFAULT + RENAME
+// =====================================================
+
+const {
+    firstN: namaDepanBaru = "Default",
+    middleN: namaTengahBaru = "K",
+    lastN: namaBelakangBaru = "Default"
+} = person;
+
+
+// property tidak ada di person
+// maka default digunakan
+
+console.log(namaDepanBaru);   // Default
+console.log(namaTengahBaru);  // K
+console.log(namaBelakangBaru);// Default
+
+
+
+// =====================================================
+// KEUNTUNGAN DESTRUCTURING
+// =====================================================
+
+// 1. kode lebih singkat
+// 2. mudah dibaca
+// 3. bisa ambil nested data
+// 4. bisa default value
+// 5. bisa rename variable
+
+
+
+// =====================================================
+// KESIMPULAN
+// =====================================================
+
+// Array destructuring → berdasarkan posisi
+// Object destructuring → berdasarkan nama property

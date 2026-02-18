@@ -1,82 +1,145 @@
+// ==============================
+// TRUTHY DAN FALSY DI JAVASCRIPT
+// ==============================
+
+// JavaScript akan mengkonversi nilai menjadi boolean
+// saat digunakan dalam kondisi seperti if, while, dll
+
 let data = "";
-if(data){
+
+if (data) {
     console.log("Data is truthy");
 } else {
     console.log("Data is falsy");
 }
 
+// Output:
+// Data is falsy
+// karena "" (string kosong) adalah falsy
+
+
 /*
 ========================
-FALSY VALUES (HANYA INI)
+APA ITU FALSY?
 ========================
 
-false
-0
--0
-0n
-""      (empty string)
-null
-undefined
-NaN
+Falsy adalah nilai yang dianggap false saat dikonversi ke boolean
+
+Contoh:
+Boolean("") → false
+Boolean(0)  → false
 
 
 ========================
-TRUTHY VALUES (SEMUA SELAIN DI ATAS)
+FALSY VALUES (HANYA 8)
 ========================
+
+false        // boolean false
+
+0            // number nol
+-0           // negative zero
+
+0n           // BigInt nol
+
+""           // string kosong
+
+null         // tidak ada nilai (intentional empty)
+
+undefined    // belum diberi nilai
+
+NaN          // Not a Number
+
+
+========================
+SEMUA SELAIN INI ADALAH TRUTHY
+========================
+
+Contoh truthy:
 
 true
 
-// semua number selain 0 dan -0
+// number selain 0
 1
 -1
-0.1
--0.1
-Infinity
--Infinity
+100
 
-// semua string yang TIDAK kosong
+// string tidak kosong
 " "
 "0"
 "false"
-"null"
-"undefined"
-"hello"
+"Richo"
 
-// semua object
+// object
 {}
-{a:1}
 
-// semua array (bahkan kosong)
+// array
 []
-[1,2,3]
 
-// semua function
+// function
 function(){}
-()=>{}
 
-// semua Date
-new Date()
-
-// semua BigInt selain 0n
-1n
-999n
-
-// semua Symbol
-Symbol()
-Symbol("test")
-
-// semua RegExp
-/regex/
-
-// semua class instance
-new MyClass()
+// dll
 
 
 ========================
-SUMMARY PALING PENTING
+CONTOH PRAKTIS
+========================
+*/
+
+if ("Richo") {
+    console.log("Truthy"); // dijalankan
+}
+
+if (0) {
+    console.log("Tidak jalan"); // tidak dijalankan
+}
+
+if ([]) {
+    console.log("Array kosong tetap truthy"); // dijalankan
+}
+
+
+/*
+========================
+KONVERSI KE BOOLEAN
+========================
+*/
+
+console.log(Boolean(""));        // false
+console.log(Boolean("Richo"));  // true
+
+console.log(Boolean(0));        // false
+console.log(Boolean(1));        // true
+
+console.log(Boolean(null));     // false
+console.log(Boolean({}));       // true
+
+
+/*
+========================
+KEGUNAAN PRAKTIS
+========================
+*/
+
+// cek apakah variabel ada isi
+
+let username = "";
+
+if (username) {
+    console.log("Ada username");
+} else {
+    console.log("Username kosong");
+}
+
+// Output: Username kosong
+
+
+/*
+========================
+KESIMPULAN INTI
 ========================
 
-FALSY hanya 8:
+// FALSY hanya 8 nilai:
 
 false
 0
@@ -88,6 +151,5 @@ undefined
 NaN
 
 
-TRUTHY adalah SEMUA selain itu.
-
+// selain itu adalah TRUTHY
 */
