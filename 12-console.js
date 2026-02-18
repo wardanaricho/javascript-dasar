@@ -1,0 +1,11 @@
+console.log("Ini adalah console log");
+console.error("Ini adalah console error");
+console.warn("Ini adalah console warning");
+console.info("Ini adalah console info");
+console.debug("Ini adalah console debug");
+console.table("Ini adalah console table");
+console.time("Ini adalah console time");
+console.timeEnd("Ini adalah console time");
+console.assert("Ini adalah console assert");
+console.count("Ini adalah console count");
+console.clear();
